@@ -53,11 +53,12 @@ class linklist:
             print("-> ",p.data,end =" ")
             p=p.link
     #Display list in reverse order
-    def reverse(p):
+    def reverse(self,p):
         if p is None:
             return
-        reverse(p.link())
-        print("->",p.data)
+        else:
+            self.reverse(p.link)
+            print(" -> ",p.data,end="")
     #delete the  starting node from List
     def delete(self):
         if self.head is None:
@@ -85,8 +86,15 @@ class linklist:
             self.delete();
         else:
             p=self.head
-            while p!=None:
-                
+            i=0
+            while p!=None and pos-1 is not i:
+                i+=1
+                p=p.link
+            if p is None and pos>=i:
+                print("Invalid Position")
+            else:
+                p.link=p.link.link
+
 def main():
     l=linklist()
     ch='y'
@@ -99,7 +107,8 @@ def main():
 6.Display in reverse order
 7.Delete from begining
 8.Delete from end
-9.Delete from position''')
+9.Delete from position
+10.EXIT''')
         
         option=int(input("Enter option:::"))
         
@@ -119,7 +128,7 @@ def main():
         elif option is 5:
             l.display()
         elif option is 6:
-            print("List is:::")
+            print("List in Reverse Order is :::",end="")
             l.reverse(l.head)
         elif option is 7:
             l.delete()
@@ -128,5 +137,7 @@ def main():
         elif option is 9:
             pos=int(input("Enter Position(0 ......n)::"))
             l.deleteFromPos(pos)
+        else:
+            quit()
         ch=input("\nEnter y to continue program:::")
 main()
