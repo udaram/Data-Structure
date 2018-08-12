@@ -1,5 +1,7 @@
-#Linklist implementation
-
+'''
+Linklist implementation
+It is the linklist implementation program using python language
+'''
 class Node:
     def __init__(self,data):
         self.data=data
